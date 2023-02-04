@@ -20,7 +20,7 @@ object TelegramSocialMediaShare {
         flutterResult: MethodChannel.Result,
         filePath: String?,
         dstPath: String?,
-        fileProviderPath: String,
+
         fileType: String,
         message: String?,
     ) {

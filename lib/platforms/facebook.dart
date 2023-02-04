@@ -20,7 +20,7 @@ class FacebookShare {
   Future<dynamic> shareFileToFacebook({
     required AssetType fileType,
     required String? filePath,
-    String? fileProviderPath,
+     
     String? dstPath,
     String? pageId,
     String? ref,
@@ -43,7 +43,7 @@ class FacebookShare {
         'fileType': fileType.name,
         'filePath': filePath,
         'dstPath': dstPath,
-        'fileProviderPath': fileProviderPath,
+          
         'pageId': pageId,
         'ref': ref,
         'peopleIds': peopleIds,
@@ -142,7 +142,7 @@ class FacebookShare {
   ///
   /// Working on: Android and iOS platforms.
   Future<dynamic> shareMediaContentFileToFacebook({
-    String? fileProviderPath,
+     
     List<String?>? videoUrls,
     List<String?>? imageUrls,
     String? dstPath,
@@ -162,7 +162,7 @@ class FacebookShare {
       'shareMediaContentFileFacebook',
       <String, dynamic>{
         'dstPath': dstPath,
-        'fileProviderPath': fileProviderPath,
+          
         'pageId': pageId,
         'ref': ref,
         'peopleIds': peopleIds,
@@ -185,7 +185,7 @@ class FacebookShare {
   Future<dynamic> shareBackgroundAssetFileToFacebookStory({
     required String? filePath,
     required String appId,
-    String? fileProviderPath,
+     
     required AssetType fileType,
     String? dstPath,
   }) async {
@@ -200,7 +200,7 @@ class FacebookShare {
         'fileType': fileType.name,
         'filePath': filePath,
         'appId': appId,
-        'fileProviderPath': fileProviderPath,
+          
         'dstPath': dstPath,
       },
     );
@@ -230,7 +230,7 @@ class FacebookShare {
   /// Working on: Android and iOS platforms.
   Future<dynamic> shareStickerAssetToFacebookStory({
     required String appId,
-    String? fileProviderPath,
+     
     required String? stickerPath,
     String? dstPath,
     List<String>? stickerTopBgColors,
@@ -240,7 +240,7 @@ class FacebookShare {
       'shareStickerAssetFacebookStory',
       <String, dynamic>{
         'appId': appId,
-        'fileProviderPath': fileProviderPath,
+          
         'stickerPath': stickerPath,
         'dstPath': dstPath,
         'stickerTopBgColors': stickerTopBgColors,
@@ -270,7 +270,7 @@ class FacebookShare {
   ///
   /// Working on: Android platform.
   Future<dynamic> shareBitmapImageBackgroundAssetToFacebookStory({
-    String? fileProviderPath,
+     
     required String? imagePath,
     String? dstPath,
     String? pageId,
@@ -289,7 +289,7 @@ class FacebookShare {
       'shareBitmapImageBackgroundAssetFacebookStory',
       <String, dynamic>{
         'imagePath': imagePath,
-        'fileProviderPath': fileProviderPath,
+          
         'dstPath': dstPath,
         'hashtag': hashtag,
         'pageId': pageId,
@@ -325,7 +325,7 @@ class FacebookShare {
   ///
   /// Working on: Android platform.
   Future<dynamic> shareImageBackgroundAssetContentToFacebookStory({
-    String? fileProviderPath,
+     
     required String? photoBackgroundAssetPath,
     String? dstPath,
     String? pageId,
@@ -342,7 +342,7 @@ class FacebookShare {
       'shareImageBackgroundAssetContentFacebookStory',
       <String, dynamic>{
         'dstPath': dstPath,
-        'fileProviderPath': fileProviderPath,
+          
         'hashtag': hashtag,
         'pageId': pageId,
         'ref': ref,
@@ -374,7 +374,7 @@ class FacebookShare {
   ///
   /// Working on: Android platform.
   Future<dynamic> shareVideoBackgroundAssetContentToFacebookStory({
-    String? fileProviderPath,
+     
     required String? videoBackgroundAssetPath,
     String? dstPath,
     String? pageId,
@@ -391,7 +391,7 @@ class FacebookShare {
       'shareVideoBackgroundAssetContentFacebookStory',
       <String, dynamic>{
         'dstPath': dstPath,
-        'fileProviderPath': fileProviderPath,
+          
         'hashtag': hashtag,
         'pageId': pageId,
         'ref': ref,
@@ -433,7 +433,7 @@ class FacebookShare {
   Future<dynamic> shareVideoToFacebookReels({
     required String? filePath,
     String? appId,
-    String? fileProviderPath,
+     
     String? dstPath,
     String? stickerPath,
     String? stickerTopBgColor,
@@ -445,7 +445,7 @@ class FacebookShare {
         'filePath': filePath,
         'stickerPath': stickerPath,
         'appId': appId,
-        'fileProviderPath': fileProviderPath,
+          
         'dstPath': dstPath,
         'stickerTopBgColor': stickerTopBgColor,
         'stickerBottomBgColor': stickerBottomBgColor,

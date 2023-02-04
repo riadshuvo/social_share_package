@@ -29,7 +29,7 @@ object TikTokSocialMediaShare {
 //        clientKey: String,
         fileType: String,
         fileUrls: List<String?>?,
-        fileProviderPath: String,
+         
         dstPath: String?,
     ) {
         fileUrls?.let {
@@ -96,7 +96,7 @@ object TikTokSocialMediaShare {
         shareFormat: String,
         landedPageType: String,
         fileUrls: List<String?>?,
-        fileProviderPath: String,
+         
         dstPath: String?,
         hashtag: ArrayList<String>?,
     ) {

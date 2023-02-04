@@ -17,7 +17,7 @@ class InstagramShare {
   Future<dynamic> shareFileToInstagram({
     required AssetType fileType,
     required String? filePath,
-    String? fileProviderPath,
+     
     String? dstPath,
   }) async {
     assert(
@@ -29,7 +29,7 @@ class InstagramShare {
       'shareFileInsta',
       {
         'filePath': filePath,
-        'fileProviderPath': fileProviderPath,
+          
         'dstPath': dstPath,
         'fileType': fileType.name,
       },

@@ -79,7 +79,7 @@ object TwitterSocialMediaShare {
         flutterResult: MethodChannel.Result,
         filePath: String?,
         dstPath: String?,
-        fileProviderPath: String,
+
         fileType: String,
         title: String?,
     ) {

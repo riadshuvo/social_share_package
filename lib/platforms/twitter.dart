@@ -48,7 +48,7 @@ class TwitterShare {
   /// Working on: Android and iOS platforms.
   Future<dynamic> shareFileToTwitter({
     required String? filePath,
-    String? fileProviderPath,
+     
     required AssetType fileType,
     String? dstPath,
     String? iOSConsumerKey,
@@ -64,7 +64,7 @@ class TwitterShare {
       'shareFileTwitter',
       <String, dynamic>{
         'filePath': filePath,
-        'fileProviderPath': fileProviderPath,
+          
         'dstPath': dstPath,
         'fileType': fileType.name,
         'iOSConsumerKey': iOSConsumerKey,

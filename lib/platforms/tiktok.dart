@@ -17,7 +17,7 @@ class TikTokShare {
   /// Working on: Android and iOS platforms.
   Future<dynamic> shareFilesToTikTok({
     required List<String?>? fileUrls,
-    String? fileProviderPath,
+     
     required AssetType fileType,
     String? dstPath,
     TikTokShareFormatType shareFormat = TikTokShareFormatType.normal,
@@ -35,7 +35,7 @@ class TikTokShare {
       'shareFilesTikTok',
       {
         'fileUrls': fileUrls,
-        'fileProviderPath': fileProviderPath,
+          
         'fileType': fileType.name,
         'dstPath': dstPath,
         'shareFormat': shareFormat.name,

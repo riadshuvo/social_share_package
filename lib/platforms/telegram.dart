@@ -62,7 +62,7 @@ class TelegramShare {
   /// Working on: Android and iOS platforms.
   Future<dynamic> shareFileToTelegram({
     required String? filePath,
-    String? fileProviderPath,
+     
     required AssetType fileType,
     String? dstPath,
     String? message,
@@ -71,7 +71,7 @@ class TelegramShare {
       'shareFileTelegram',
       <String, dynamic>{
         'filePath': filePath,
-        'fileProviderPath': fileProviderPath,
+          
         'dstPath': dstPath,
         'fileType': fileType.name,
         'message': message,

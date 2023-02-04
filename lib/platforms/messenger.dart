@@ -18,7 +18,7 @@ class MessengerShare {
   /// Working on: Android and iOS platforms.
   Future<dynamic> shareFileToMessenger({
     required String? filePath,
-    String? fileProviderPath,
+     
     required AssetType fileType,
     String? dstPath,
     String? pageId,
@@ -39,7 +39,7 @@ class MessengerShare {
       {
         'fileType': fileType.name,
         'filePath': filePath,
-        'fileProviderPath': fileProviderPath,
+          
         'dstPath': dstPath,
         'pageId': pageId,
         'ref': ref,

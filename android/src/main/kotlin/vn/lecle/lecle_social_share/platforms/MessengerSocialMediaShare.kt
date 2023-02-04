@@ -28,7 +28,7 @@ object MessengerSocialMediaShare {
         fileType: String,
         filePath: String?,
         dstPath: String?,
-        fileProviderPath: String,
+
     ) {
         filePath?.let {
             val hasPackage = StoreService.isPackageInstalled(context, MESSENGER_PACKAGE)

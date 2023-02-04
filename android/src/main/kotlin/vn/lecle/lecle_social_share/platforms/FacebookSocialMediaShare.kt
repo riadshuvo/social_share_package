@@ -29,7 +29,7 @@ object FacebookSocialMediaShare {
         context: Activity,
         flutterResult: MethodChannel.Result,
         filePath: String?,
-        fileProviderPath: String,
+         
         dstPath: String?,
         pageId: String?,
         ref: String?,
@@ -154,7 +154,7 @@ object FacebookSocialMediaShare {
         context: Activity,
         flutterResult: MethodChannel.Result,
         filePath: String?,
-        fileProviderPath: String,
+         
         dstPath: String?,
         pageId: String?,
         ref: String?,
@@ -233,7 +233,7 @@ object FacebookSocialMediaShare {
         context: Activity,
         flutterResult: MethodChannel.Result,
         mediaPath: String?,
-        fileProviderPath: String,
+         
         dstPath: String?,
         pageId: String?,
         ref: String?,
@@ -539,7 +539,7 @@ object FacebookSocialMediaShare {
         filePath: String?,
         appId: String,
         dstPath: String?,
-        fileProviderPath: String,
+         
     ) {
         filePath?.let {
             val hasPackage = StoreService.isPackageInstalled(context, FACEBOOK_PACKAGE)
@@ -598,7 +598,7 @@ object FacebookSocialMediaShare {
         context: Activity,
         flutterResult: MethodChannel.Result,
         appId: String,
-        fileProviderPath: String,
+         
         stickerPath: String?,
         dstPath: String?,
         stickerTopBgColor: String?,
@@ -667,7 +667,7 @@ object FacebookSocialMediaShare {
         flutterResult: MethodChannel.Result,
         imagePath: String?,
         dstPath: String?,
-        fileProviderPath: String,
+         
         pageId: String?,
         ref: String?,
         peopleIds: List<String>?,
@@ -876,7 +876,7 @@ object FacebookSocialMediaShare {
         context: Activity,
         flutterResult: MethodChannel.Result,
         dstPath: String?,
-        fileProviderPath: String,
+         
         pageId: String?,
         ref: String?,
         peopleIds: List<String>?,
@@ -1009,7 +1009,7 @@ object FacebookSocialMediaShare {
         context: Activity,
         flutterResult: MethodChannel.Result,
         dstPath: String?,
-        fileProviderPath: String,
+         
         pageId: String?,
         ref: String?,
         peopleIds: List<String>?,
@@ -1143,7 +1143,7 @@ object FacebookSocialMediaShare {
         filePath: String?,
         stickerPath: String?,
         appId: String,
-        fileProviderPath: String,
+         
         dstPath: String?,
         stickerTopBgColor: String?,
         stickerBottomBgColor: String?,

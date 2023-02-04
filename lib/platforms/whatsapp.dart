@@ -21,7 +21,7 @@ class WhatsAppShare {
   /// Working on: Android and iOS platforms.
   Future<dynamic> shareFileToWhatsApp({
     required String? filePath,
-    String? fileProviderPath,
+     
     required AssetType fileType,
     String? dstPath,
     String? message,
@@ -32,7 +32,7 @@ class WhatsAppShare {
       'shareFileWhatsApp',
       <String, dynamic>{
         'filePath': filePath,
-        'fileProviderPath': fileProviderPath,
+          
         'fileType': type,
         'dstPath': dstPath,
         'message': message,

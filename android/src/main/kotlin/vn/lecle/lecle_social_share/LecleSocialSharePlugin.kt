@@ -142,7 +142,7 @@ class LecleSocialSharePlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
     private fun shareVideoToFacebook(arguments: Map<*, *>, result: Result) {
         val filePath: String? = arguments["filePath"] as? String
         val dstPath: String? = arguments["dstPath"] as? String
-        val fileProviderPath: String = arguments["fileProviderPath"] as String
+        
         val pageId: String? = arguments["pageId"] as? String
         val ref: String? = arguments["ref"] as? String
         val peopleIds: List<String>? = arguments["peopleIds"] as? List<String>
@@ -157,7 +157,6 @@ class LecleSocialSharePlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
             activity,
             result,
             filePath,
-            fileProviderPath,
             dstPath,
             pageId,
             ref,
@@ -174,7 +173,7 @@ class LecleSocialSharePlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
     private fun sharePhotoToFacebook(arguments: Map<*, *>, result: Result) {
         val filePath: String? = arguments["filePath"] as? String
         val dstPath: String? = arguments["dstPath"] as? String
-        val fileProviderPath: String = arguments["fileProviderPath"] as String
+        
         val pageId: String? = arguments["pageId"] as? String
         val ref: String? = arguments["ref"] as? String
         val peopleIds: List<String>? = arguments["peopleIds"] as? List<String>
@@ -186,7 +185,6 @@ class LecleSocialSharePlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
             activity,
             result,
             filePath,
-            fileProviderPath,
             dstPath,
             pageId,
             ref,
@@ -252,7 +250,7 @@ class LecleSocialSharePlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
     }
 
     private fun shareMediaContentFileToFacebook(arguments: Map<*, *>, result: Result) {
-        val fileProviderPath: String = arguments["fileProviderPath"] as String
+        
         val pageId: String? = arguments["pageId"] as? String
         val ref: String? = arguments["ref"] as? String
         val peopleIds: List<String>? = arguments["peopleIds"] as? List<String>
@@ -266,7 +264,6 @@ class LecleSocialSharePlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
         FacebookSocialMediaShare.shareMediaContentFileToFacebook(
             activity,
             result,
-            fileProviderPath,
             pageId,
             ref,
             peopleIds,
@@ -319,7 +316,6 @@ class LecleSocialSharePlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
         val filePath = arguments["filePath"] as? String
         val appId = arguments["appId"] as String
         val dstPath = arguments["dstPath"] as? String
-        val fileProviderPath = arguments["fileProviderPath"] as String
         val fileType = arguments["fileType"] as String
 
         FacebookSocialMediaShare.shareBackgroundAssetFileToFacebookStory(
@@ -329,14 +325,13 @@ class LecleSocialSharePlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
             filePath,
             appId,
             dstPath,
-            fileProviderPath
         )
     }
 
     private fun shareStickerAssetToFacebookStory(arguments: Map<*, *>, result: Result) {
         val stickerPath = arguments["stickerPath"] as? String
         val appId = arguments["appId"] as String
-        val fileProviderPath: String = arguments["fileProviderPath"] as String
+        
         val dstPath: String? = arguments["dstPath"] as? String
         val stickerTopBgColors = arguments["stickerTopBgColors"] as? List<*>
         val stickerBottomBgColors = arguments["stickerBottomBgColors"] as? List<*>
@@ -345,7 +340,6 @@ class LecleSocialSharePlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
             activity,
             result,
             appId,
-            fileProviderPath,
             stickerPath,
             dstPath,
             stickerTopBgColors?.get(0) as? String,
@@ -356,7 +350,7 @@ class LecleSocialSharePlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
     private fun shareBitmapImageBackgroundAssetToFacebookStory(arguments: Map<*, *>, result: Result) {
         val imagePath: String? = arguments["imagePath"] as? String
         val dstPath: String? = arguments["dstPath"] as? String
-        val fileProviderPath: String = arguments["fileProviderPath"] as String
+        
         val hashtag: String? = arguments["hashtag"] as? String
         val pageId: String? = arguments["pageId"] as? String
         val ref: String? = arguments["ref"] as? String
@@ -374,7 +368,6 @@ class LecleSocialSharePlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
             result,
             imagePath,
             dstPath,
-            fileProviderPath,
             pageId,
             ref,
             peopleIds,
@@ -390,7 +383,7 @@ class LecleSocialSharePlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
     }
 
     private fun shareImageBackgroundAssetContentToFacebookStory(arguments: Map<*, *>, result: Result) {
-        val fileProviderPath: String = arguments["fileProviderPath"] as String
+        
         val hashtag: String? = arguments["hashtag"] as? String
         val pageId: String? = arguments["pageId"] as? String
         val ref: String? = arguments["ref"] as? String
@@ -407,7 +400,6 @@ class LecleSocialSharePlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
             activity,
             result,
             dstPath,
-            fileProviderPath,
             pageId,
             ref,
             peopleIds,
@@ -422,7 +414,7 @@ class LecleSocialSharePlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
     }
 
     private fun shareVideoBackgroundAssetContentToFacebookStory(arguments: Map<*, *>, result: Result) {
-        val fileProviderPath: String = arguments["fileProviderPath"] as String
+        
         val hashtag: String? = arguments["hashtag"] as? String
         val pageId: String? = arguments["pageId"] as? String
         val ref: String? = arguments["ref"] as? String
@@ -439,7 +431,6 @@ class LecleSocialSharePlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
             activity,
             result,
             dstPath,
-            fileProviderPath,
             pageId,
             ref,
             peopleIds,
@@ -457,7 +448,7 @@ class LecleSocialSharePlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
         val filePath: String? = arguments["filePath"] as? String
         val stickerPath: String? = arguments["stickerPath"] as? String
         val appId = arguments["appId"] as String
-        val fileProviderPath: String = arguments["fileProviderPath"] as String
+        
         val dstPath: String? = arguments["dstPath"] as? String
         val stickerTopBgColor: String? = arguments["stickerTopBgColor"] as? String
         val stickerBottomBgColor: String? = arguments["stickerBottomBgColor"] as? String
@@ -468,7 +459,6 @@ class LecleSocialSharePlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
             filePath,
             stickerPath,
             appId,
-            fileProviderPath,
             dstPath,
             stickerTopBgColor,
             stickerBottomBgColor,
@@ -479,9 +469,9 @@ class LecleSocialSharePlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
         val fileType: String = arguments["fileType"] as String
         val filePath: String? = arguments["filePath"] as? String
         val dstPath: String? = arguments["dstPath"] as? String
-        val fileProviderPath: String = arguments["fileProviderPath"] as String
+        
 
-        InstagramSocialMediaShare.shareFileToInstagram(activity, result, fileType, filePath, dstPath, fileProviderPath)
+        InstagramSocialMediaShare.shareFileToInstagram(activity, result, fileType, filePath, dstPath,)
     }
 
     private fun sendMessageToInstagram(arguments: Map<*, *>, result: Result) {
@@ -494,9 +484,8 @@ class LecleSocialSharePlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
         val fileType = arguments["fileType"] as String
         val filePath = arguments["filePath"] as? String
         val dstPath = arguments["dstPath"] as? String
-        val fileProviderPath = arguments["fileProviderPath"] as String
 
-        MessengerSocialMediaShare.shareFileToMessenger(activity, result, fileType, filePath, dstPath, fileProviderPath)
+        MessengerSocialMediaShare.shareFileToMessenger(activity, result, fileType, filePath, dstPath,)
     }
 
     private fun sendMessageToMessenger(arguments: Map<*, *>, result: Result) {
@@ -530,11 +519,10 @@ class LecleSocialSharePlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
     private fun shareFileToTelegram(arguments: Map<*, *>, result: Result) {
         val filePath = arguments["filePath"] as? String
         val dstPath = arguments["dstPath"] as? String
-        val fileProviderPath = arguments["fileProviderPath"] as String
         val fileType = arguments["fileType"] as String
         val message = arguments["message"] as? String
 
-        TelegramSocialMediaShare.shareFileToTelegram(activity, result, filePath, dstPath, fileProviderPath, fileType, message)
+        TelegramSocialMediaShare.shareFileToTelegram(activity, result, filePath, dstPath, fileType, message)
     }
 
     private fun sendMessageToTelegram(arguments: Map<*, *>, result: Result) {
@@ -557,7 +545,7 @@ class LecleSocialSharePlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
 
     private fun shareFileToWhatsApp(arguments: Map<*, *>, result: Result) {
         val filePath = arguments["filePath"] as? String
-        val fileProviderPath: String = arguments["fileProviderPath"] as String
+        
         val fileType = arguments["fileType"] as String
         val dstPath = arguments["dstPath"] as? String
         val message = arguments["message"] as? String
@@ -567,7 +555,6 @@ class LecleSocialSharePlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
             result,
             filePath,
             dstPath,
-            fileProviderPath,
             fileType,
             message,
         )
@@ -598,18 +585,16 @@ class LecleSocialSharePlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
     private fun shareFileToTwitter(arguments: Map<*, *>, result: Result) {
         val filePath = arguments["filePath"] as? String
         val dstPath = arguments["dstPath"] as? String
-        val fileProviderPath = arguments["fileProviderPath"] as String
         val fileType = arguments["fileType"] as String
         val title = arguments["title"] as? String
 
-        TwitterSocialMediaShare.shareFileToTwitter(activity, result, filePath, dstPath, fileProviderPath, fileType, title)
+        TwitterSocialMediaShare.shareFileToTwitter(activity, result, filePath, dstPath, fileType, title)
     }
 
     private fun shareFilesToTikTok(arguments: Map<*, *>, result: Result) {
         val fileUrls = arguments["fileUrls"] as? ArrayList<String?>
         val fileType = arguments["fileType"] as String
         val dstPath = arguments["dstPath"] as? String
-        val fileProviderPath = arguments["fileProviderPath"] as String
 //        val clientKey = arguments["clientKey"] as String
 
         TikTokSocialMediaShare.shareFilesToTikTok(
@@ -618,7 +603,6 @@ class LecleSocialSharePlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
 //            clientKey,
             fileType,
             fileUrls,
-            fileProviderPath,
             dstPath,
         )
     }

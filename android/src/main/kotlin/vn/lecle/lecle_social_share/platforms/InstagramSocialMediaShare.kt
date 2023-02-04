@@ -24,7 +24,7 @@ object InstagramSocialMediaShare {
         fileType: String,
         filePath: String?,
         dstPath: String?,
-        fileProviderPath: String,
+
     ) {
         filePath?.let {
             val hasPackage = StoreService.isPackageInstalled(context, INSTAGRAM_PACKAGE)
