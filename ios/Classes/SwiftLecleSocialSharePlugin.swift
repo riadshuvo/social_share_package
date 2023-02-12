@@ -80,12 +80,6 @@ public class SwiftLecleSocialSharePlugin: NSObject, FlutterPlugin, SharingDelega
         case "shareFileWhatsApp":
             shareFileToWhatsApp(result: result, arguments: args)
             break
-        case "createTwitterTweet":
-            createTwitterTweet(result: result, arguments: args)
-            break
-        case "shareFileTwitter":
-            shareFileToTwitter(result: result, arguments: args)
-            break
         case "shareFilesTikTok":
             shareFilesToTikTok(result: result, arguments: args)
             break
@@ -1360,166 +1354,14 @@ public class SwiftLecleSocialSharePlugin: NSObject, FlutterPlugin, SharingDelega
             result(false)
         }
     }
-    
-    func createTwitterTweet(result: @escaping FlutterResult, arguments: [String : Any?]) {
-        let title = arguments["title"] as! String
-        let attachedUrl = arguments["attachedUrl"] as? String
-        let hashtags = arguments["hashtags"] as? [String]
-        let via = arguments["via"] as? String
-        let related = arguments["related"] as? [String]
-        
-        guard let twitterURL = URL(string: "twitter://") else {
-            result(false)
-            return
-        }
-        
-        if (UIApplication.shared.canOpenURL(twitterURL)) {
-            var urlString: String!
-            
-            let ht = hashtags?.joined(separator: ",")
-            let re = related?.joined(separator: ",")
-            
-            urlString = "https://twitter.com/intent/tweet?text=\(title)"
-            
-            if (attachedUrl != nil) {
-                urlString += "&url=\(attachedUrl!)"
-            }
-            if (via != nil) {
-                urlString += "&via=\(via!)"
-            }
-            if (ht != nil) {
-                urlString += "&hashtags=\(ht!)"
-            }
-            if (re != nil) {
-                urlString += "&related=\(re!)"
-            }
-            
-            let twUrl = URL.init(string: urlString.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!)
-            
-            if UIApplication.shared.canOpenURL(twUrl!) {
-                UIApplication.shared.open(twUrl!)
-            } else {
-                result(false)
-            }
-        } else {
-            guard let twitterStoreLink = URL(string: "itms-apps://itunes.apple.com/us/app/apple-store/id333903271") else {
-                result(false)
-                return
-            }
-            UIApplication.shared.open(twitterStoreLink, options: [:], completionHandler: { _Arg in
-                
-            })
-            
-            result(false)
-        }
-    }
-    
-    private var store: TWTRSessionStore {
-        return TWTRTwitter.sharedInstance().sessionStore
-    }
-    func shareFileToTwitter(result: @escaping FlutterResult, arguments: [String : Any?]) {
-        let filePath = arguments["filePath"] as? String
-        let fileType = arguments["fileType"] as? String
-        let title = arguments["title"] as? String
-        let iOSConsumerKey = arguments["iOSConsumerKey"] as? String
-        let iOSSecretKey = arguments["iOSSecretKey"] as? String
-        
-        guard let twitterURL = URL(string: "twitter://") else {
-            result(false)
-            return
-        }
-        
-        guard let path = filePath else {
-            result(false)
-            return
-        }
-        
-        guard let consumerKey = iOSConsumerKey else {
-            result(false)
-            return
-        }
-        
-        guard let secretKey = iOSSecretKey else {
-            result(false)
-            return
-        }
-        
-        if (UIApplication.shared.canOpenURL(twitterURL)) {
-            switch fileType {
-            case "video":
-                TWTRTwitter.sharedInstance().start(withConsumerKey: consumerKey, consumerSecret: secretKey)
-                
-                let videoURL = URL(fileURLWithPath: path)
-                guard let userId = store.session()?.userID else { return }
-                let client = TWTRAPIClient.init(userID: userId)
-                
-                // Get data from Url
-                let videoData = try? Data(contentsOf: videoURL)
-                guard let data = videoData else {
-                    result(false)
-                    return
-                }
-                
-                client.sendTweet(withText: title ?? "", videoData: data) {
-                    (tweet, error) in
-                    
-                    if let e = error {
-                        // Handle error
-                        result(e.localizedDescription)
-                    } else {
-                        // Handle Success
-                        result(tweet)
-                    }
-                }
-                break
-            case "image":
-                TWTRTwitter.sharedInstance().start(withConsumerKey: consumerKey, consumerSecret: secretKey)
-                
-                guard let userId = store.session()?.userID else { return }
-                let client = TWTRAPIClient.init(userID: userId)
-                
-                var photoAsset: UIImage!
-                createAssetURL(url: URL(fileURLWithPath: path), result: result, fileType: PHAssetMediaType.image) {
-                    asset in DispatchQueue.main.async {
-                        photoAsset = self.getUIImage(asset: asset)
-                        
-                        client.sendTweet(withText: title ?? "", image: photoAsset) {
-                            (tweet, error) in
-                            
-                            if let e = error {
-                                // Handle error
-                                result(e.localizedDescription)
-                            } else {
-                                // Handle Success
-                                result(tweet)
-                            }
-                        }
-                    }
-                }
-                break
-            default:
-                break
-            }
-        } else {
-            guard let twitterStoreLink = URL(string: "itms-apps://itunes.apple.com/us/app/apple-store/id333903271") else {
-                result(false)
-                return
-            }
-            UIApplication.shared.open(twitterStoreLink, options: [:], completionHandler: { _Arg in
-                
-            })
-            
-            result(false)
-        }
-    }
-    
+
     func shareFilesToTikTok(result: @escaping FlutterResult, arguments: [String : Any?]) {
         let fileUrls = arguments["fileUrls"] as? [String?]
         let fileType = arguments["fileType"] as! String
         let shareFormat = arguments["shareFormat"] as! String
         let landedPageType = arguments["landedPageType"] as! String
         let hashtag = arguments["hashtag"] as? [String]
-        
+
         // https://www.tiktok.com/en/
         // snssdk1180://
         // musically://
@@ -1527,12 +1369,12 @@ public class SwiftLecleSocialSharePlugin: NSObject, FlutterPlugin, SharingDelega
             result(false)
             return
         }
-        
+
         guard let urls = fileUrls else {
             flutterResult(false)
             return
         }
-        
+
         if (UIApplication.shared.canOpenURL(tikTokURL)) {
             let request = TikTokOpenSDKShareRequest()
             var shareFiles = [String]()
@@ -1540,7 +1382,7 @@ public class SwiftLecleSocialSharePlugin: NSObject, FlutterPlugin, SharingDelega
             var mediaType: TikTokOpenSDKShareMediaType!
             var format: TikTokOpenSDKShareFormatType!
             var pageType: TikTokOpenSDKLandedPageType!
-            
+
             if (fileType == "image") {
                 type = PHAssetMediaType.image
                 mediaType = TikTokOpenSDKShareMediaType.image
@@ -1548,13 +1390,13 @@ public class SwiftLecleSocialSharePlugin: NSObject, FlutterPlugin, SharingDelega
                 type = PHAssetMediaType.video
                 mediaType = TikTokOpenSDKShareMediaType.video
             }
-            
+
             if (shareFormat == "normal") {
                 format = TikTokOpenSDKShareFormatType.normal
             } else {
                 format = TikTokOpenSDKShareFormatType.greenScreen
             }
-            
+
             if (landedPageType == "clip") {
                 pageType = TikTokOpenSDKLandedPageType.clip
             } else if (landedPageType == "edit") {
@@ -1562,26 +1404,26 @@ public class SwiftLecleSocialSharePlugin: NSObject, FlutterPlugin, SharingDelega
             } else {
                 pageType = TikTokOpenSDKLandedPageType.publish
             }
-            
+
             for (i, url) in urls.enumerated() {
                 if let u = url {
                     createAssetURL(url: URL(fileURLWithPath: u), result: result, fileType: type) {
                         asset in DispatchQueue.main.async {
                             shareFiles.append(asset.localIdentifier)
-                            
+
                             if (i == urls.count - 1) {
                                 request.localIdentifiers = shareFiles
                                 request.mediaType = mediaType
                                 request.shareFormat = format
                                 request.landedPageType = pageType
                                 request.hashtag = hashtag?.joined(separator: ",") ?? ""
-                                
+
                                 request.send(completionBlock: { response in
                                     if (response.isSucceed) {
                                         result(true)
                                         return
                                     }
-                                    
+
                                     result(false)
                                 })
                             }
@@ -1596,16 +1438,16 @@ public class SwiftLecleSocialSharePlugin: NSObject, FlutterPlugin, SharingDelega
                 return
             }
             UIApplication.shared.open(tikTokStoreLink, options: [:], completionHandler: { _Arg in
-                
+
             })
-            
+
             result(false)
         }
     }
-    
+
     func openTikTokUserPage(result: @escaping FlutterResult, arguments: [String : Any?]) {
         let username = arguments["username"] as! String
-        
+
         // https://www.tiktok.com/en/
         // snssdk1180://
         // musically://
@@ -1613,11 +1455,11 @@ public class SwiftLecleSocialSharePlugin: NSObject, FlutterPlugin, SharingDelega
             result(false)
             return
         }
-        
+
         if (UIApplication.shared.canOpenURL(tikTokURL)) {
             let urlString = "https://www.tiktok.com/\(username)"
             let tiUrl = URL.init(string: urlString.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!)
-            
+
             if UIApplication.shared.canOpenURL(tiUrl!) {
                 UIApplication.shared.open(tiUrl!)
             } else {
@@ -1629,9 +1471,9 @@ public class SwiftLecleSocialSharePlugin: NSObject, FlutterPlugin, SharingDelega
                 return
             }
             UIApplication.shared.open(tikTokStoreLink, options: [:], completionHandler: { _Arg in
-                
+
             })
-            
+
             result(false)
         }
     }
