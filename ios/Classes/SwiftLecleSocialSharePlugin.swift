@@ -3,7 +3,6 @@ import UIKit
 import FBSDKCoreKit
 import FBSDKShareKit
 import Photos
-import TwitterKit
 import TikTokOpenSDK
 
 public class SwiftLecleSocialSharePlugin: NSObject, FlutterPlugin, SharingDelegate {
