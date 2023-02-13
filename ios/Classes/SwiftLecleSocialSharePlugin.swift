@@ -3,7 +3,6 @@ import UIKit
 import FBSDKCoreKit
 import FBSDKShareKit
 import Photos
-import TwitterKit
 import TikTokOpenSDK
 
 public class SwiftLecleSocialSharePlugin: NSObject, FlutterPlugin, SharingDelegate {
@@ -79,12 +78,6 @@ public class SwiftLecleSocialSharePlugin: NSObject, FlutterPlugin, SharingDelega
             break
         case "shareFileWhatsApp":
             shareFileToWhatsApp(result: result, arguments: args)
-            break
-        case "createTwitterTweet":
-            createTwitterTweet(result: result, arguments: args)
-            break
-        case "shareFileTwitter":
-            shareFileToTwitter(result: result, arguments: args)
             break
         case "shareFilesTikTok":
             shareFilesToTikTok(result: result, arguments: args)
